@@ -7,49 +7,26 @@ $(function(){
 
 		defaultModules:{
 			blank: [
-			        'css-mode',
-			        'h5bp-content',
-			        'modernizr',
-			        'jquerymin',
-			        'h5bp-htaccess',
-			        'h5bp-chromeframe',
-		            'h5bp-analytics',
-		            'h5bp-iecond',
-		            'h5bp-favicon',
-		            'h5bp-appletouchicons',
-		            'h5bp-scripts',
-		            'h5bp-robots',
-		            'h5bp-humans',
-		            'h5bp-404',
-		            'h5bp-adobecrossdomain'
-			        ],
-			initializr: [
-			             'css-mode',
-			             'izr-responsive',
-			             'modernizr',
-			             'respond',
-			             'jquerymin',
-			             'h5bp-chromeframe',
-			             'h5bp-analytics',
-			             'h5bp-favicon',
-			             'h5bp-appletouchicons',
-			             'h5bp-iecond'
-			             ],
-			bootstrap: [
-			            'less-mode',
-			            'boot-hero',
-			             'modernizr',
-			             'respond',
-			             'jquerymin',
-			             'h5bp-chromeframe',
-			             'h5bp-analytics',
-			             'h5bp-favicon',
-			             'h5bp-appletouchicons',
-			             'h5bp-iecond',
-			             'less'
-			            ]
-		},
-		baseUrl:'http://localhost:8888/builder?'
+				'hidden-mode',
+				'with-bg',
+				'with-persistent-bg',
+				'no-options',
+				'no-override'],
+			page_action:[
+				'page-mode',
+				'with-bg',
+				'with-persistent-bg',
+				'no-override',
+				'no-options'
+			],
+			browser_action:[
+				'browser-mode',
+				'with-bg',
+				'with-persistent-bg',
+				'no-override',
+				'no-options'
+			]
+		}
 	};
 	
 	/************
@@ -58,7 +35,9 @@ $(function(){
 	
 	var params;
 	var modules = [];
-	var stylelang = '';
+	var dirs_to_remove = [];
+	var files_to_remove = [];
+	var manifest;
 
 	/**********
 	   EVENTS
@@ -73,12 +52,12 @@ $(function(){
 		fillDefaultModules('blank');
 	});
 
-	$('#preconfig-initializr').click(function(){
-		fillDefaultModules('initializr');
+	$('#preconfig-page').click(function(){
+		fillDefaultModules('page_action');
 	});
 	
-	$('#preconfig-bootstrap').click(function(){
-		fillDefaultModules('bootstrap');
+	$('#preconfig-browser').click(function(){
+		fillDefaultModules('browser_action');
 	});
 	
 	/*********
@@ -87,7 +66,6 @@ $(function(){
 	
 	function fillDefaultModules(type){
 		$('input').attr('checked', false);
-				
 		for (var i = 0, curModule; curModule = config.defaultModules[type][i++];){
 			$('input[value=' + curModule +']').attr('checked', true);
 		};
@@ -97,98 +75,161 @@ $(function(){
 	
 	function update(){
 		updateModules();
-		updateUrls();
 	}
 	
 	function updateModules(){
 		modules = [];
+		permissions = [];
 		$('input').each(function(){
-			if ($(this).is(':checked'))
+			if($(this).is('.perm') && $(this).is(':checked')){
+				permissions.push($(this).val());
+			}else if ($(this).is(':checked')){
 				modules.push($(this).val());
-		});
-		replaceSpecialModules();
-	}
-	
-	function replaceSpecialModules(){
-		if (modules.indexOf('jquerymin') != -1 && modules.indexOf('jquerydev') != -1){
-			modules.remove('jquerymin');
-			modules.remove('jquerydev');
-			modules.push('jquery');
-		}
-
-		if (modules.indexOf('modernizr') != -1 && modules.indexOf('respond') != -1){
-			modules.remove('modernizr');
-			modules.remove('respond');
-			modules.push('modernizrrespond');
-		}
-
-		if (modules.indexOf('html5shiv') != -1 && modules.indexOf('respond') != -1){
-			modules.remove('html5shiv');
-			modules.remove('respond');
-			modules.push('html5shivrespond');
-		}
-		
-		if (modules.indexOf('less-mode') != -1){
-			modules.remove('less-mode');
-			stylelang = 'less';
-		}
-		else
-			stylelang = '';
-		
-		if (modules.indexOf('css-mode') != -1){
-			modules.remove('css-mode');
-		}
-		
-		if (modules.indexOf('h5bp-content') != -1 || modules.indexOf('izr-responsive') != -1){
-			modules.push('h5bp-css');
-			modules.push('h5bp-csshelpers');
-			modules.push('h5bp-mediaqueryprint');
-		}
-
-		if (modules.indexOf('h5bp-content') != -1){
-			modules.push('h5bp-mediaqueries');
-		}
-		
-		if (modules.indexOf('h5bp-iecond') == -1){
-			modules.push('simplehtmltag');
-		}		
-
-		if (modules.indexOf('h5bp-scripts') == -1){
-			modules.push('izr-emptyscript');
-		}		
-		
-		if (modules.indexOf('boot-hero') != -1){
-			modules.push('boot-css');
-			modules.push('boot-scripts');
-			if (modules.indexOf('jquery') == -1 && modules.indexOf('jquerydev') == -1 && modules.indexOf('jquerymin') == -1){
-				modules.push('jquerymin');
+			}else if($(this).is('.match_pattern') && $(this).val() !=''){
+				match_ptrns = $(this).val().split(';');
+				for(var i = 0; i<match_ptrns.length; i++){
+					permissions.push(match_ptrns[i].trim());
+				}
 			}
-		}		
-		
-		
+		});
+		//check if user already changed the zip file, if so, regenerate
+		if(!downloadButton.download){
+			updateManifestFile();
+		}else{
+			downloadButton.removeAttribute('download');
+			genButton.html('Download it!');
+			importZip(function(){
+				updateManifestFile();
+			});
+		}
 	}
 	
-	function updateUrls(){
-		var modeParam = '';
-		
-		if (stylelang != ''){
-			modeParam = 'mode=' + stylelang + '&';
+	function updateManifestFile(){
+		manifest = $.extend(true,{},window.manifest);
+		dirs_to_remove = [];
+		files_to_remove = [];
+
+		if(!manifest.name) return;
+
+		/*
+		*  Background page/script/event page
+		*/
+
+		if(modules.has('hidden-mode')){
+			delete manifest.page_action;
+			delete manifest.browser_action;
+			dirs_to_remove.push("src/page_action");
+			dirs_to_remove.push("src/browser_action");
+		}else if(modules.has('page-mode')){
+			delete manifest.browser_action;
+			dirs_to_remove.push("src/browser_action");
+		}else if(modules.has("browser-mode")){
+			delete manifest.page_action;
+			dirs_to_remove.push("src/page_action");
+		}
+		/*
+		*  Background page/script/event page
+		*/
+
+		if ( modules.has('no-bg') ) {
+			delete manifest.background;
+			dirs_to_remove.push("src/bg");
+		} else{
+			manifest.background.persistent = modules.has('with-persistent-bg');
+			if ( modules.has('with-js-bg') ){
+				delete manifest.background.page;
+				files_to_remove.push("src/bg/background.html");
+			} else if (modules.has('with-bg')){
+				delete manifest.background.scripts;
+				files_to_remove.push("src/bg/background.js");
+			}
+		}
+		/*
+		*  overrides
+		*/
+
+		if ( modules.has('no-override') ) {
+			delete manifest.chrome_url_overrides;
+			dirs_to_remove.push("src/override");
+		} else{
+			var url = manifest.chrome_url_overrides.newtab;
+			if ( modules.has('override-bookmarks') ){
+				delete manifest.chrome_url_overrides.newtab;
+				manifest.chrome_url_overrides.bookmarks = url;
+				if(!permissions.has('bookmarks')){
+					$('.perm[value="bookmarks"]').prop('checked',true);
+					permissions.push('bookmarks');
+				}
+
+			} else if (modules.has('override-history')){
+				delete manifest.chrome_url_overrides.newtab;
+				manifest.chrome_url_overrides.history = url;
+				if(!permissions.has('history')){
+					$('.perm[value="history"]').prop('checked',true);
+					permissions.push('history');
+				}
+			}
 		}
 
-		params = '';
-		
-		for (var i = 0, curModule; curModule = modules[i++];){
-			params += curModule + '&';
+		/*
+		*  Options
+		*/
+		if ( modules.has('no-options') ) {
+			delete manifest.options_page;
+			delete manifest.options_custom_page;
+			dirs_to_remove.push("src/options");
+			dirs_to_remove.push("src/options_custom");
+		}else{
+			if(modules.has('with-options')){
+				delete manifest.options_custom_page;
+				dirs_to_remove.push("src/options_custom");
+			}else if(modules.has('with-custom-options')){
+				manifest.options_page = manifest.options_custom_page;
+				delete manifest.options_custom_page;
+				dirs_to_remove.push("src/options");
+				if(!permissions.has('jquerymin')){
+					$('.perm[value="jquerymin"]').prop('checked',true);
+					permissions.push('jquerymin');
+				}
+			}
 		}
-		
-		params = params.substring(0, params.length - 1);
 
-		$('#preview-url').val(config.baseUrl + 'print&' + modeParam + params);
-		$('#download-url').val(config.baseUrl + modeParam + params);	
-		
-		$('#preview-link').attr('href', config.baseUrl + 'print&' + modeParam + params);
-		$('#download-link').attr('href', config.baseUrl + modeParam + params);	
-	}	
+		/*
+		*  Injects
+		*/
+		if ( !modules.has('inject-css') && !modules.has('inject-js') ) {
+			delete manifest.content_scripts;
+			dirs_to_remove.push("src/inject");
+		}else{
+			if(!modules.has('inject-css')){
+				delete manifest.content_scripts[0].css;
+				files_to_remove.push("src/inject/inject.css");
+			}
+			if(!modules.has('inject-js')){
+				delete manifest.content_scripts[0].js;
+				files_to_remove.push("src/inject/inject.js");
+			}
+		}
+		/*
+		* Addons
+		 */
+
+		if(!modules.has('jquerymin')){
+			files_to_remove.push('js/jquery-1.7.1.min.js');
+		}
+		if(!modules.has('omnibox')){
+			delete manifest.omnibox;
+		}
+		/*
+		*  Permissions
+		*/
+		if(permissions.length > 0){
+			manifest.permissions = permissions;
+		}else{
+			delete manifest.permissions;
+		}
+	}
+
 
 	/***********
 	   HELPERS
@@ -203,6 +244,12 @@ $(function(){
 			return -1;
 		};
 	}
+	if(!Array.has){
+		Array.prototype.has = function(searchedElement){
+			var i = this.indexOf(searchedElement);
+			return (i > -1) ? true : false;
+		}
+	}
 	
 	Array.prototype.remove = function(searchedElement){
 		var i = this.indexOf(searchedElement);
@@ -213,10 +260,87 @@ $(function(){
 	/***********
 	    MAIN
 	 ***********/
-	
+	var filesystem, zipFs = new zip.fs.FS();
+	var genButton = $('#gen-link');
+	var downloadButton = $('#download-link')[0];
+
 	if ($('input:checked').length > 0)
 		$('#hidden-section').fadeIn(0);
 	update();
-	
+
+
+
+
+	genButton.on('click',function(){
+		processZip();
+		event.preventDefault();
+		return false;
+	});
+
+	function onerror(message) {
+		console.error(message);
+	}
+
+	zip.workerScriptsPath = "zip/";
+	imported_zip_root = "ext/";
+
+	function importZip(callback){
+		zipFs.importHttpContent("ext.zip", false, function() {
+				extFs =  zipFs.root.children[0];
+				manifestFs =  extFs.getChildByName('manifest.json');
+				manifestFs.getText(function(data){
+					window.manifest = JSON.parse(data);
+					if(typeof callback == 'function'){
+						callback();
+					}
+				});
+			}, onerror);
+	};
+	importZip();
+	function processZip(_data){
+		if (!downloadButton.download) {
+			console.log('generating the zip file eyooooooo');
+			manifest = _data || manifest;
+			manifestJson = JSON.stringify(manifest);
+			for (var i = 0; i < dirs_to_remove.length; i++) {
+				var dir = dirs_to_remove[i];
+				var dirFs = zipFs.find(imported_zip_root + dir);
+				console.log('removing directory: ' + dir);
+				zipFs.remove(dirFs);
+			}
+			for (var i = 0; i < files_to_remove.length; i++) {
+				var file = files_to_remove[i];
+				var fileFs = zipFs.find(imported_zip_root + file);
+				console.log('removing file: ' + file);
+				zipFs.remove(fileFs);
+			}
+
+			//remove old cluncky manifest file from zip
+			zipFs.remove(manifestFs);
+			//write new manifest to filesystem API
+			extFs.addText('manifest.json', manifestJson);
+			genButton.html('Generating download!');
+			zipFs.exportData64URI(function (data) {
+				genButton.html('Download ready!');
+
+				var clickEvent = document.createEvent("MouseEvent");
+				clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+				downloadButton.href = data;
+
+				downloadButton.download = 'extensionizr_custom' + Date.now() + '.zip';
+				downloadButton.dispatchEvent(clickEvent);
+				event.preventDefault();
+				return false;
+
+			});
+		}else{
+			//redownload
+			var clickEvent = document.createEvent("MouseEvent");
+			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			downloadButton.dispatchEvent(clickEvent);
+			event.preventDefault();
+			return false;
+		}
+	}
 	
 });

@@ -1,38 +1,42 @@
 <!doctype html>
-<!--[if lt IE 8]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Initializr - Start an HTML5 Boilerplate project in 15 seconds!</title>
-	<meta name="description" content="Initializr generates clean customizable templates based on HTML5 Boilerplate with just what you need to start quickly!">
-	<meta name="author" content="Jonathan Verrecchia">
+	<title>Extensionizr - boilerplate for your chrome extension</title>
+	<meta name="description" content="Extensionizr helps you create the basis for your own awesome chrome extension">
+	<meta name="author" content="Alex Wolkov">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta property="og:title" content="Extensionizr" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://extensionizr.com" />
+	<meta property="og:image" content="http://extensionizr.com/img/preview.png" />
+	<meta property="og:site_name" content="Extensionizr" />
+	<meta property="fb:admins" content="619421487" />
+
+	<meta itemprop="name" content="Extensionizr">
+	<meta itemprop="description" content="Jump start your chrome extension development! Create a custom chrome extension boilerplate in 15 seconds.">
+	<meta itemprop="image" content="http://extensionizr.com">
+	<link rel="image_src" href="http://extensionizr.com" />
 
 	<link rel="stylesheet" href="css/style.css">
-
-	<script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 <body>
 	<div id="header-container">
 		<header class="wrapper clearfix">
 			<div id="title-container">
-				<h1 id="title">Initializr</h1>
-				<h2>Start an HTML5 project in 15 seconds!</h2>
+				<h1 id="title">Extensionizr</h1>
+				<h2>Start a chrome extension in 15 seconds!</h2>
 			</div>
 			<div id="html5-logo-container">
-				<img src="img/html5-logo-165-cut.png" alt="" />
 			</div>
 			<div id="follow-container">
-				<p><a id="author" href="https://twitter.com/verekia" target="_blank">Jonathan Verrecchia</a></p>
+				<p><a id="author" href="https://alexw.me/" target="_blank">Alex Wolkov</a></p>
 				<div id="follow-iframes-container">
-					<a href="https://twitter.com/verekia" class="twitter-follow-button" data-align="right" data-width="260px" data-show-count="true" data-size="large">Follow @verekia</a>
-					<a href="https://twitter.com/initializr" class="twitter-follow-button" data-align="right" data-width="260px" data-show-count="true" data-size="large">Follow @initializr</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+					<a href="https://twitter.com/altryne" class="twitter-follow-button" data-align="right" data-width="186px" data-show-count="true" data-size="small">Follow @altryne</a>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://extensionizr.com" data-width="186px" data-text="Create a chrome extension in 15 seconds! A boilerplate for your extension." data-via="altryne" data-size="small" data-related="altryne" data-dnt="true" data-action="Share extensionizr">Share extensionizr</a>
+					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fextensionizr.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21&amp;appId=397573470274307" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px;" allowTransparency="true" class="facebook_like"></iframe>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</div>
 		</header>
@@ -41,37 +45,40 @@
 		<div id="main" class="wrapper clearfix">
 			<div id="intro" class="clearfix">
 				<div id="badges" class="clearfix">
-					<ul>
-						<li><div class="badge-label">H5BP<br />3.0.3</div></li>
-						<li><div class="badge-label">Modernizr<br />2.5.3</div></li>
-						<li><div class="badge-label">jQuery<br />1.7.2</div></li>
-					</ul>
+
 				</div>
 				<p>
-					Initializr is an HTML5 templates generator to help you getting started with a new project based on HTML5 Boilerplate. It generates for you a clean customizable template with just what you need to start!
+					Extensionizr helps you create the basis for your own awesome chrome extension!
 				</p>
 			</div>
 			<h2 class="separator">
 				1 - Pre-configuration
 			</h2>
+
 			<div id="preconfig-section" class="clearfix">
 				<div class="preconfig-container blank-background">
 					<button id="preconfig-blank" class="preconfig-block blank-background clearfix">
-						<h3>Classic H5BP</h3>
+						<h3>Hidden extension</h3>
 					</button>
-					<div class="preconfig-links-container"><a target="_blank" href="http://html5boilerplate.com/docs/" class="first">Docs</a><a target="_blank" href="http://demo.html5boilerplate.com/">Demo</a></div>
+					<!--<div class="preconfig-links-container">-->
+						<!--<a target="_blank" href="http://html5boilerplate.com/docs/" class="first">Docs</a><a target="_blank" href="http://demo.html5boilerplate.com/">Demo</a>-->
+					<!--</div>-->
 				</div>
 				<div class="preconfig-container initializr-background">
-					<button id="preconfig-initializr" class="preconfig-block initializr-background clearfix">
-						<h3>Responsive</h3>
+					<button id="preconfig-page" class="preconfig-block initializr-background clearfix">
+						<h3>Page action</h3>
 					</button>
-					<div class="preconfig-links-container"><a target="_blank" href="http://verekia.com/initializr/responsive-template" class="first">Docs</a><a target="_blank" href="http://www.initializr.com/try">Demo</a></div>
+					<!--<div class="preconfig-links-container">-->
+						<!--<a target="_blank" href="http://verekia.com/initializr/responsive-template" class="first">Docs</a><a target="_blank" href="http://www.initializr.com/try">Demo</a>-->
+					<!--</div>-->
 				</div>
 				<div class="preconfig-container bootstrap-background">
-					<button id="preconfig-bootstrap" class="preconfig-block bootstrap-background clearfix">
-						<h3>Bootstrap</h3>
+					<button id="preconfig-browser" class="preconfig-block bootstrap-background clearfix">
+						<h3>Browser action</h3>
 					</button>
-					<div class="preconfig-links-container"><a target="_blank" href="http://twitter.github.com/bootstrap/" class="first">Docs</a><a target="_blank" href="http://twitter.github.com/bootstrap/examples/hero.html">Demo</a></div>
+					<!--<div class="preconfig-links-container">-->
+						<!--<a target="_blank" href="http://twitter.github.com/bootstrap/" class="first">Docs</a><a target="_blank" href="http://twitter.github.com/bootstrap/examples/hero.html">Demo</a>-->
+					<!--</div>-->
 				</div>
 			</div>
 			<div id="hidden-section">
@@ -81,67 +88,81 @@
 				<div id="customize-section" class="clearfix">
 				
 					<div class="customize-section">
-						<h3>HTML/CSS Template</h3>
-						<label><input type="radio" name="htmlcss" value="h5bp-content">No template</label>
-						<label><input type="radio" name="htmlcss" value="izr-responsive">Mobile-first Responsive</label>
-						<label><input type="radio" name="htmlcss" value="boot-hero">Responsive Bootstrap 2.0.4</label>
+						<h3>Extension type</h3>
+						<label><input type="radio" name="extension-type" value="hidden-mode">Hidden extension</label>
+						<label><input type="radio" name="extension-type" value="page-mode">Page action</label>
+						<label><input type="radio" name="extension-type" value="browser-mode">Browser action</label>
 					</div>
 					<div class="customize-section">
-						<h3>HTML5 Polyfills</h3>
-						<label><input type="radio" name="polyfill" value="modernizr">Modernizr</label>
-						<label><input type="radio" name="polyfill" value="html5shiv">Just HTML5shiv</label>
-						<label><input type="checkbox" value="respond">Respond - <a target="_blank" href="https://github.com/h5bp/html5-boilerplate/issues/816#issuecomment-2512805">Alternatives</a></label>
+						<h3>Background page</h3>
+						<label><input type="radio" name="bg-page" value="with-bg">Background.html</label>
+						<label><input type="radio" name="bg-page" value="with-js-bg">Background.js</label>
+						<label><input type="checkbox" value="with-persistent-bg">Persistent</label>
+						<label><input type="radio" name="bg-page" value="no-bg">No background</label>
 					</div>
 					<div class="customize-section">
-						<h3>Server Config</h3>
-						<label><input type="checkbox" value="h5bp-htaccess">.htaccess</label>
-						<label><input type="checkbox" value="h5bp-nginx">nginx.conf</label>
-						<label><input type="checkbox" value="h5bp-webconfig">web.config</label>
+						<h3>Options page</h3>
+						<label><input type="radio" name="options-page" value="with-options">Blank options.html</label>
+						<label><input type="radio" name="options-page" value="with-custom-options">Custom options.html</label>
+						<label><input type="radio" name="options-page" value="no-options">No options page</label>
 					</div>
 					<div class="customize-section">
-						<h3>jQuery</h3>
-						<label><input type="checkbox" value="jquerymin">Minified</label>
-						<label><input type="checkbox" value="jquerydev">Development</label>
+						<h3>Override</h3>
+						<label><input type="radio" name="override" value="override-ntp">Override new tab</label>
+						<label><input type="radio" name="override" value="override-bookmarks">Override bookmarks</label>
+						<label><input type="radio" name="override" value="override-history">Override history</label>
+						<label><input type="radio" name="override" value="no-override">No Override</label>
 					</div>
 					<div class="customize-section">
-						<h3>Stylesheet Language</h3>						
-						<label><input type="radio" name="stylelang" value="css-mode">CSS</label>
-						<label><input type="radio" name="stylelang" value="less-mode">LESS - <a href="http://verekia.com/less-css/dont-read-less-css-tutorial-highly-addictive" target="_blank">Tutorial</a></label>
+						<h3>Content scripts</h3>
+						<label><input type="checkbox" value="inject-css">Inject css</label>
+						<label><input type="checkbox" value="inject-js">Inject js</label>
 					</div>
 					<div class="customize-section">
-						<h3>Google Services</h3>
-						<label><input type="checkbox" value="h5bp-chromeframe">Chrome Frame</label>
-						<label><input type="checkbox" value="h5bp-analytics">Analytics</label>
+						<h3>Misc addons</h3>
+						<label><input type="checkbox" value="omnibox">Add omnibox support</label>
+						<label><input type="checkbox" value="jquerymin">Add jQuery 1.7.2</label>
 					</div>
-					
+					<div class="customize-section special-section">
+						<h3>URL permissions </h3>
+						<!--<label><input type="checkbox" name="match-pattern" value="match-pattern" id="match-pattern"> Match pattern: </label>-->
+						<input type="text" class="match_pattern" name="uri-perms" value=""> <span >Separated by ";" (https://*/* ; http://google.com/*)</span>
+					</div>
 					<div class="customize-section">
-						<h3 class="first-h5bp-label">H5BP Optional</h3>
-						<label><input type="checkbox" value="h5bp-build">Build Script (6MB)</label>
-						<label><input type="checkbox" value="h5bp-iecond">IE Classes</label>
-						<label><input type="checkbox" value="h5bp-favicon">Favicon</label>
+						<h3 class="first-h5bp-label">Permissions</h3>
+						<label><input class="perm" type="checkbox" value="bookmarks">Bookmarks</label>
+						<label><input class="perm" type="checkbox" value="favicon">Chrome://favicon</label>
+						<label><input class="perm" type="checkbox" value="clipboardRead">Clipboard read access</label>
+						<label><input class="perm" type="checkbox" value="clipboardWrite">Clipboard write access</label>
+						<label><input class="perm" type="checkbox" value="unlimitedStorage">Unlimited Storage</label>
 					</div>
 					<div class="customize-section customize-h5bp-no-title customize-h5bp-no-title-middle">
-						<h3 class="second-h5bp-label">H5BP Optional</h3>
-						<label><input type="checkbox" value="h5bp-appletouchicons">Apple Touch Icons</label>
-						<label><input type="checkbox" value="h5bp-scripts">plugins.js</label>
-						<label><input type="checkbox" value="h5bp-robots">Robots.txt</label>
+						<h3 class="second-h5bp-label">Permissions</h3>
+						<label><input class="perm" type="checkbox" value="contextMenus">Context menus</label>
+						<label><input class="perm" type="checkbox" value="cookies">Cookies</label>
+						<label><input class="perm" type="checkbox" value="fileBrowserHandler">FileBrowserHandler</label>
+						<label><input class="perm" type="checkbox" value="tts">Text to speech</label>
+						<label><input class="perm" type="checkbox" value="ttsEngine">Text to speech engine</label>
+
 					</div>
-					<div class="customize-section customize-h5bp-no-title">
-						<h3 class="third-h5bp-label">H5BP Optional</h3>
-						<label><input type="checkbox" value="h5bp-humans">Humans.txt</label>
-						<label><input type="checkbox" value="h5bp-404">404 Page</label>
-						<label><input type="checkbox" value="h5bp-adobecrossdomain">Adobe Cross Domain</label>
+					<div class="customize-section customize-h5bp-no-title" style="clear:right">
+						<h3 class="third-h5bp-label">Permissions</h3>
+						<label><input class="perm" type="checkbox" value="history">History</label>
+						<label><input class="perm" type="checkbox" value="idle">Idle</label>
+						<label><input class="perm" type="checkbox" value="management">Management</label>
+						<label><input class="perm" type="checkbox" value="notifications">Notifications</label>
+						<label><input class="perm" type="checkbox" value="tabs">Tabs</label>
+						<label><input class="perm" type="checkbox" value="geolocation">Geolocation</label>
 					</div>
 					
 				</div>
-				
-<!-- 				<textarea id="download-url"></textarea><br /> -->
-<!-- 				<textarea id="preview-url"></textarea> -->
+
 	
 				<div id="download-section" class="clearfix">
-					<a id="download-link" href="#">Download it!</a>
-					<a id="preview-link" href="#" target="_blank">What's inside?</a>
+					<a id="gen-link" href="#">Download it!</a>
+
 				</div>
+				<a id="download-link" href="#"></a>
 			</div>
 		</div> <!-- #main -->
 	</div> <!-- #main-container -->
@@ -151,34 +172,44 @@
 			<div id="github-container" class="clearfix">
 				<img src="img/github-logo.png" alt="Github logo" />
 				<div id="github-repositories">
-					<h3>Github Repositories</h3>
+					<h3>Open source baby!</h3>
+
 					<ul>
-						<li><a target="_blank" href="https://github.com/verekia/initializr">The builder itself</a></li>
-						<li><a target="_blank" href="https://github.com/verekia/initializr-template">The responsive template</a></li>
-						<li><a target="_blank" href="https://github.com/verekia/initializr-website">This page</a></li>
+						<li>This webapp is on <a href="#" target="_blank">github</a>!</li>
+					</ul>
+
+					<h3>Thanx to these guys :</h3>
+					<ul>
+						<li><a href="https://github.com/verekia/initializr-website" target="_blank">Initializr website</a></li>
+						<li><a href="https://github.com/gildas-lormeau/zip.js" target="_blank">ZIP.js</a></li>
+						<li><a href="https://github.com/mahemoff/chrome-boilerplate" target="_blank">Chrome boilerplate (mahemoff)</a></li>
+						<li><a href="http://github.com/groxx/Chrome-Extension-Boilerplate/" target="_blank">Extension boilerplate (groxx)</a></li>
 					</ul>
 				</div>
 			</div>
 			<article id="docs">
-				<h3>About Initializr</h3>
-				<p>Initializr is here to kick-start the development of your new projects. It generates templates based on HTML5 Boilerplate
-				by allowing you to choose which parts you want or don't want from it. A <a href="http://verekia.com/initializr/responsive-template" target="_blank">responsive template</a> has also been added to start
-				from a basic design instead of a blank page.
+				<h3>Another *izr? When will this stop</h3>
+				<p>Extensionizr is a simple way to jump start your chrome extension development. Just select the type of extension you want,
+				choose permissions and youre off.</p>
 
-				<h3>HTML5 Boilerplate</h3>
-				<p>"H5BP" is here to handle the boring stuff you don't want to deal with. It provides a rock-solid default code
-				that improves the cross-browser compatibility for HTML5 projects and handy tools to help their development.</p>
-				<p>You may have noticed that HTML5 Boilerplate also provides a builder on its main page, called "Boilerplate Custom".
-				Actually this builder <em>is</em> Initializr. It uses the same backend, so feel free to use whichever you prefer, it's exactly the same!
+				<h3>Why does this exist?</h3>
+				<p>
+					Because I got super tired creating the file structure for a new extension over and over again. <br>
+					Extensionizr will be always updated with the latest chrome manifest changes. <br>
+					In addition, I wanted to create a client-side only tool. Extensionizr doesn't user server side code! Don't beleive me? Checkout the github repo.
+
 				</p>
 
 
-				<h3>International guides</h3>
-				<p>Initializr functioning is pretty intuitive but it can help to read guides about it in your own language. Here are some which will help you using Initializr and understanding HTML5 Boilerplate, HTML5shiv or Modernizr, in <a href="http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate" target="_blank">French</a> (official), <a href="http://www.mk-dizajn.com/en/2011/06/initializr-izvrstan-html5-predlozak-za-svaki-web-projekt/" target="_blank">English</a>, <a href="http://www.diegoante.com/initializr.html" target="_blank">Spanish</a>, <a href="http://starwebdesign.com.ua/blog/2011/02/16/initializr-generator-chistogo-i-nastraivaemogo-html5-shablona-osnovannogo-na-boilerplate/" target="_blank">Russian</a>, <a href="http://www.mk-dizajn.com/2011/06/initializr-izvrstan-html5-predlozak-za-svaki-web-projekt/" target="_blank">Croatian</a>, <a href="http://www.jaapvdveen.nl/2011/02/17/initializr-een-template-generator-op-basis-van-html5-boilerplate/" target="_blank">Dutch</a> and <a href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/" target="_blank">Portuguese</a>.
-				If you write an nice article in a missing language, I will put your link here!</p>
+				<h3>Based on open source</h3>
+				<p>
+					Extensionizr is 90% based on open source pieces I put together. It's <strong>heavily</strong> inspired by
+					<a href="http://initializr.com">Initializr by Jonathan Verrecchia</a>.
+				</p>
+
 				
 				<h3>Contact</h3>
-				<p>Email me at <span id="email"></span>, or mention <a target="_blank" href="http://twitter.com/#!/initializr">@initializr</a> and <a target="_blank" href="http://twitter.com/#!/verekia">@verekia</a>.</p>
+				<p>Email me at <span id="email"></span>, or mention <a target="_blank" href="http://twitter.com/#!/altryne">@altryne</a>.</p>
 			
 			</article>
 
@@ -188,19 +219,20 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
+<script type="text/javascript" src="zip/zip.js"></script>
+<script type="text/javascript" src="zip/zip-fs.js"></script>
+<script type="text/javascript" src="zip/dataview.js"></script>
 <script src="js/script.js"></script>
-<script>
-	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
-	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-	s.parentNode.insertBefore(g,s)}(document,'script'));
+<script type="text/javascript">
+		var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36571842-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 </script>
-
-<!--[if lt IE 7 ]>
-	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-<![endif]-->
-
 </body>
 </html>

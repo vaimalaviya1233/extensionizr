@@ -217,6 +217,9 @@ $(function(){
 		if(!modules.has('jquerymin')){
 			files_to_remove.push('js/jquery-1.7.1.min.js');
 		}
+		if(!modules.has('angular')){
+			files_to_remove.push('js/angular.min.js');
+		}
 		if(!modules.has('omnibox')){
 			delete manifest.omnibox;
 		}

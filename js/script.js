@@ -141,7 +141,6 @@ $(function(){
 				files_to_remove.push("src/bg/background.html");
 			} else if (modules.has('with-bg')){
 				delete manifest.background.scripts;
-				files_to_remove.push("src/bg/background.js");
 			}
 		}
 		/*
@@ -187,10 +186,6 @@ $(function(){
 				manifest.options_page = manifest.options_custom_page;
 				delete manifest.options_custom_page;
 				dirs_to_remove.push("src/options");
-				if(!permissions.has('jquerymin')){
-					$('.perm[value="jquerymin"]').prop('checked',true);
-					permissions.push('jquerymin');
-				}
 			}
 		}
 
@@ -215,7 +210,7 @@ $(function(){
 		 */
 
 		if(!modules.has('jquerymin')){
-			files_to_remove.push('js/jquery-1.7.1.min.js');
+			files_to_remove.push('js/jquery-1.8.3.min.js');
 		}
 		if(!modules.has('angular')){
 			files_to_remove.push('js/angular.min.js');

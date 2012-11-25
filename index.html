@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 
 	<title>Extensionizr - boilerplate for your chrome extension</title>
 	<meta name="description" content="Extensionizr helps you create the basis for your own awesome chrome extension">
@@ -20,6 +21,7 @@
 	<link rel="image_src" href="http://extensionizr.com" />
 
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/jquery.qtip.min.css">
 </head>
 <body>
 	<div id="header-container">
@@ -35,7 +37,7 @@
 				<div id="follow-iframes-container">
 					<a href="https://twitter.com/altryne" class="twitter-follow-button" data-align="right" data-width="186px" data-show-count="true" data-size="small">Follow @altryne</a>
 					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://extensionizr.com" data-width="186px" data-text="Create a chrome extension in 15 seconds! A boilerplate for your extension." data-via="altryne" data-size="small" data-related="altryne" data-dnt="true" data-action="Share extensionizr">Share extensionizr</a>
-					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fextensionizr.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21&amp;appId=397573470274307" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px;" allowTransparency="true" class="facebook_like"></iframe>
+					<!--<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fextensionizr.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21&amp;appId=397573470274307" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px;" allowTransparency="true" class="facebook_like"></iframe>-->
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</div>
@@ -89,7 +91,7 @@
 				
 					<div class="customize-section">
 						<h3>Extension type</h3>
-						<label><input type="radio" name="extension-type" value="hidden-mode">Hidden extension</label>
+						<label><input type="radio" name="extension-type" value="hidden-mode">Hidden extension <a class="more_info" href="http://github.com"></a></label>
 						<label><input type="radio" name="extension-type" value="page-mode">Page action
 							<a class="help" href="http://chrome.com" target="_blank"></a></label>
 						<label><input type="radio" name="extension-type" value="browser-mode">Browser action</label>
@@ -221,6 +223,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="js/libs/jquery.qtip.min.js"></script>
 <script type="text/javascript" src="zip/zip.js"></script>
 <script type="text/javascript" src="zip/zip-fs.js"></script>
 <script type="text/javascript" src="zip/dataview.js"></script>

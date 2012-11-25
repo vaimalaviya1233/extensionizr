@@ -271,7 +271,7 @@ $(function(){
 		$('#hidden-section').fadeIn(0);
 	update();
 
-
+	$('.more_info').qtip({content : "here's some mroe info"})
 
 
 	genButton.on('click',function(){

@@ -22,7 +22,7 @@ It's heavily inspired by Initializr by Jonathan Verrecchia.
 
 Source from :
 
-* http://github.com/groxx/Chrome-Extension-Boilerplate/
+* https://github.com/Swader/ChromeSkel_a
 * https://github.com/gildas-lormeau/zip.js
 * https://github.com/mahemoff/chrome-boilerplate
 * https://github.com/verekia/initializr-website

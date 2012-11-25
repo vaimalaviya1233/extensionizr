@@ -87,78 +87,151 @@
 				<h2 id="fine-tuning-separator" class="separator">
 					2 - Fine tuning
 				</h2>
+
 				<div id="customize-section" class="clearfix">
-				
+
 					<div class="customize-section">
 						<h3>Extension type</h3>
-						<label><input type="radio" name="extension-type" value="hidden-mode">Hidden extension <a class="more_info" href="http://github.com"></a></label>
+						<label><input type="radio" name="extension-type" value="hidden-mode">Hidden extension
+							<a class="more_info" data-content="Use this if you don't want any visual representation of your extension. When you only want to use inject scripts for example."></a>
+						</label>
 						<label><input type="radio" name="extension-type" value="page-mode">Page action
-							<a class="help" href="http://chrome.com" target="_blank"></a></label>
-						<label><input type="radio" name="extension-type" value="browser-mode">Browser action</label>
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/pageAction.html" data-content="Use page actions to put icons inside the address bar. Page actions represent actions that can be taken on the current page, but that aren't applicable to all pages."></a>
+						</label>
+						<label><input type="radio" name="extension-type" value="browser-mode">Browser action
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/browserAction.html" data-content="Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its icon, a browser action can also have a tooltip, a badge, and a popup."></a>
+						</label>
 					</div>
 					<div class="customize-section">
 						<h3>Background page</h3>
-						<label><input type="radio" name="bg-page" value="with-bg">Background.html</label>
-						<label><input type="radio" name="bg-page" value="with-js-bg">Background.js</label>
-						<label><input type="checkbox" value="with-persistent-bg">Persistent</label>
+						<label><input type="radio" name="bg-page" value="with-bg" checked>Background.html
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/background_pages.html" data-content="The background page is an HTML page that runs in the extension process. It exists for the lifetime of your extension, and only one instance of it at a time is active."></a>
+						</label>
+						<label><input type="radio" name="bg-page" value="with-js-bg">Background.js
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/background_pages.html#manifest" data-content="In the common case, a background page does not require any HTML markup. These kind of background pages can be implemented using JavaScript files alone"></a>
+						</label>
+						<label><input type="checkbox" value="with-persistent-bg">Persistent
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/event_pages.html" data-content='Deselect "persistent" to turn the background page to an event page. Event pages are loaded only when they are needed. When the event page is not actively doing something, it is unloaded, freeing memory and other system resources.'></a>
+						</label>
 						<label><input type="radio" name="bg-page" value="no-bg">No background</label>
 					</div>
 					<div class="customize-section">
 						<h3>Options page</h3>
-						<label><input type="radio" name="options-page" value="with-options">Blank options.html</label>
-						<label><input type="radio" name="options-page" value="with-custom-options">Custom options.html</label>
+						<label><input type="radio" name="options-page" value="with-options">Blank options.html
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/options.html" data-content="To allow users to customize the behavior of your extension, you may wish to provide an options page. If you do, a link to it will be provided from the extensions management page at chrome://extensions. Clicking the Options link opens a new tab pointing at your options page."></a>
+						</label>
+						<label><input type="radio" name="options-page" value="with-custom-options">"Fancy settings"
+							options
+							<a class="more_info" target="_blank" href="https://github.com/altryne/fancy-settings" data-content="Fancy, chrome-look-alike settings for your Chrome extension. Features include search, tabs, groups and more"></a>
+						</label>
 						<label><input type="radio" name="options-page" value="no-options">No options page</label>
 					</div>
 					<div class="customize-section">
 						<h3>Override</h3>
-						<label><input type="radio" name="override" value="override-ntp">Override new tab</label>
-						<label><input type="radio" name="override" value="override-bookmarks">Override bookmarks</label>
-						<label><input type="radio" name="override" value="override-history">Override history</label>
+						<label><input type="radio" name="override" value="override-ntp">Override new tab
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/override.html" data-content="Override the page that appears when the user chooses the Bookmark Manager menu item from the Tools menu. You can also get to this page by entering the URL chrome://bookmarks."></a>
+						</label>
+						<label><input type="radio" name="override" value="override-bookmarks">Override bookmarks
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/override.html" data-content="Override page that appears when the user chooses the History menu item from the Tools menu. You can also get to this page by entering the URL chrome://history."></a>
+						</label>
+						<label><input type="radio" name="override" value="override-history">Override history
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/override.html" data-content="Override the page that appears when the user creates a new tab or window. You can also get to this page by entering the URL chrome://newtab."></a>
+						</label>
 						<label><input type="radio" name="override" value="no-override">No Override</label>
 					</div>
 					<div class="customize-section">
 						<h3>Content scripts</h3>
-						<label><input type="checkbox" value="inject-css">Inject css</label>
-						<label><input type="checkbox" value="inject-js">Inject js</label>
+						<label><input type="checkbox" value="inject-css">Inject css
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/content_scripts.html" data-content="CSS files that are injected to web pages. Use inject.css to customize web pages styles."></a>
+						</label>
+						<label><input type="checkbox" value="inject-js">Inject js
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/content_scripts.html" data-content="JavaScript files that run in the context of web pages. By using the standard Document Object Model (DOM), they can read details of the web pages the browser visits, or make changes to them."></a>
+						</label>
 					</div>
 					<div class="customize-section">
 						<h3>Misc addons</h3>
-						<label><input type="checkbox" value="omnibox">Add omnibox support</label>
-						<label><input type="checkbox" value="jquerymin">Add jQuery 1.7.2</label>
-						<label><input type="checkbox" value="angular">Add Angular.js 1.0.2</label>
+						<label><input type="checkbox" value="omnibox">Add omnibox support
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/omnibox.html" data-content="The omnibox API allows you to register a keyword with Google Chrome's address bar, which is also known as the omnibox."></a>
+						</label>
+						<label><input type="checkbox" value="jquerymin">Add jQuery 1.7.2
+							<a class="more_info" target="_blank" href="http://jquery.com" data-content="Add jquery 1.7.2 to your extension"></a>
+						</label>
+						<label><input type="checkbox" value="angular">Add Angular.js 1.0.2
+							<a class="more_info" target="_blank" href="http://angularjs.org" data-content="Add Angular 1.0.2 to your extension"></a>
+						</label>
 					</div>
 					<div class="customize-section special-section">
-						<h3>URL permissions </h3>
+						<h3>URL permissions
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Url permissions are a match pattern set that your gives extension access to one or more hosts."></a>
+						</h3>
 						<!--<label><input type="checkbox" name="match-pattern" value="match-pattern" id="match-pattern"> Match pattern: </label>-->
-						<input type="text" class="match_pattern" name="uri-perms" value=""> <span >Separated by ";" (https://*/* ; http://google.com/*)</span>
+						<input type="text" class="match_pattern" name="uri-perms" value=""> <span>Separated by ";" (https://*/* ; http://google.com/*)</span>
 					</div>
 					<div class="customize-section">
-						<h3 class="first-h5bp-label">Permissions</h3>
-						<label><input class="perm" type="checkbox" value="bookmarks">Bookmarks</label>
-						<label><input class="perm" type="checkbox" value="favicon">Chrome://favicon</label>
-						<label><input class="perm" type="checkbox" value="clipboardRead">Clipboard read access</label>
-						<label><input class="perm" type="checkbox" value="clipboardWrite">Clipboard write access</label>
-						<label><input class="perm" type="checkbox" value="unlimitedStorage">Unlimited Storage</label>
+						<h3 class="first-h5bp-label">Permissions
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Choose the permissions you want your extension to use. Hover over a permission to get more info about what it does."></a>
+						</h3>
+						<label><input class="perm" type="checkbox" value="bookmarks">Bookmarks
+							<a class="more_info" target="_blank" href="http://code.google.com/chrome/extensions/bookmarks.html" data-content="Use the chrome.bookmarks module to create, organize, and otherwise manipulate bookmarks. Also see Override Pages, which you can use to create a custom Bookmark Manager page."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="favicon">Chrome://favicon
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content='Required if the extension uses the "chrome://favicon/url" mechanism to display the favicon of a page. For example "chrome://favicon/http://www.google.com/" '></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="clipboardRead">Clipboard read access
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Required if the extension uses document.execCommand('paste')."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="clipboardWrite">Clipboard write access
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Indicates the app or extension uses document.execCommand('copy') or document.execCommand('cut')."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="contentSettings">Content Settings
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/contentSettings.html" data-content="Content settings allow you to customize Chrome's behavior on a per-site basis instead of globally."></a>
+						</label>
 					</div>
 					<div class="customize-section customize-h5bp-no-title customize-h5bp-no-title-middle">
-						<h3 class="second-h5bp-label">Permissions</h3>
-						<label><input class="perm" type="checkbox" value="contextMenus">Context menus</label>
-						<label><input class="perm" type="checkbox" value="cookies">Cookies</label>
-						<label><input class="perm" type="checkbox" value="fileBrowserHandler">FileBrowserHandler</label>
-						<label><input class="perm" type="checkbox" value="tts">Text to speech</label>
-						<label><input class="perm" type="checkbox" value="ttsEngine">Text to speech engine</label>
+						<h3 class="second-h5bp-label">Permissions
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Choose the permissions you want your extension to use. Hover over a permission to get more info about what it does."></a>
+						</h3>
+						<label><input class="perm" type="checkbox" value="contextMenus">Context menus
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/contextMenus.html" data-content="The context menus module allows you to add items to Google Chrome's context menu."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="cookies">Cookies
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/cookies.html" data-content="Get access to cookies for a specified domain."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="fileBrowserHandler">FileBrowserHandler
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/fileBrowserHandler.html" data-content="Use the chrome.fileBrowserHandler module to extend the Chrome OS file browser. For example, you can use this API to enable users to upload files to your website.Important: This API works only on Chrome OS"></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="tts">Text to speech
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/tts.html" data-content="Use the chrome.tts module to play synthesized text-to-speech (TTS). See also the related ttsEngine module, which allows an extension to implement a speech engine."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="ttsEngine">Text to speech engine
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/ttsEngine.html" data-content="Use the chrome.ttsEngine module to implement a text-to-speech (TTS) engine using an extension."></a>
+						</label>
 
 					</div>
 					<div class="customize-section customize-h5bp-no-title" style="clear:right">
-						<h3 class="third-h5bp-label">Permissions</h3>
-						<label><input class="perm" type="checkbox" value="history">History</label>
-						<label><input class="perm" type="checkbox" value="idle">Idle</label>
-						<label><input class="perm" type="checkbox" value="management">Management</label>
-						<label><input class="perm" type="checkbox" value="notifications">Notifications</label>
-						<label><input class="perm" type="checkbox" value="tabs">Tabs</label>
-						<label><input class="perm" type="checkbox" value="geolocation">Geolocation</label>
+						<h3 class="third-h5bp-label">Permissions
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/manifest.html#permissions" data-content="Choose the permissions you want your extension to use. Hover over a permission to get more info about what it does."></a>
+						</h3>
+						<label><input class="perm" type="checkbox" value="history">History
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/history.html" data-content="Use the chrome.history module to interact with the browser's record of visited pages. You can add, remove, and query for URLs in the browser's history. To override the history page with your own version, see Override Pages."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="idle">Idle
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/idle.html" data-content="Use the chrome.idle API"></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="management">Management
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/management.html" data-content="The chrome.management module provides ways to manage the list of extensions/apps that are installed and running. It is particularly useful for extensions that override the built-in New Tab page."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="notifications">Notifications
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/notifications.html" data-content="Use desktop notifications to notify users that something important has happened. Notifications appear outside the browser window. "></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="tabs">Tabs
+							<a class="more_info" target="_blank" href="http://developer.chrome.com/extensions/tabs.html" data-content="Use the chrome.tabs module to interact with the browser's tab system. You can use this module to create, modify, and rearrange tabs in the browser."></a>
+						</label>
+						<label><input class="perm" type="checkbox" value="geolocation">Geolocation
+							<a class="more_info" target="_blank" href="http://dev.w3.org/geo/api/spec-source.html" data-content="Allows the extension to use the proposed HTML5 geolocation API without prompting the user for permission."></a>
+						</label>
 					</div>
-					
+
 				</div>
 
 	

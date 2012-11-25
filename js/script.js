@@ -271,8 +271,35 @@ $(function(){
 		$('#hidden-section').fadeIn(0);
 	update();
 
-	$('.more_info').qtip({content : "here's some mroe info"})
-
+	var elms = $('.more_info');
+	$('<div/>').qtip({
+		content : {text:"a"},
+		style: {
+			classes: 'qtip-shadow qtip-blue'
+		},
+		position : {
+			target : 'event',
+			at : "top center",
+			my : "bottom center",
+			viewport: $('#main'),
+			adjust: {
+						y: -5,
+						method : 'flip none'
+					}
+		},
+		show : {
+			target : elms
+		},
+		hide : {
+			target : elms
+		},
+		events: {
+			show: function(event, api) {
+				var target = $(event.originalEvent.target);
+				api.set('content.text', target.data('content').replace('. ','<br>'));
+			}
+		}
+	});
 
 	genButton.on('click',function(){
 		processZip();

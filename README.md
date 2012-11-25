@@ -26,3 +26,7 @@ Source from :
 * https://github.com/gildas-lormeau/zip.js
 * https://github.com/mahemoff/chrome-boilerplate
 * https://github.com/verekia/initializr-website
+
+License
+-------
+Copyright (c) 2012 Alex Wolkov. Licensed under the MIT, GPL licenses. See here for more details.

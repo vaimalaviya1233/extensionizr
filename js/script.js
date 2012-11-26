@@ -46,6 +46,9 @@ $(function(){
 	$('input').click(function(){
 		update();
 	});
+	$('input[type="text"]').blur(function(){
+		update();
+	});
 
 	
 	$('#preconfig-blank').click(function(){

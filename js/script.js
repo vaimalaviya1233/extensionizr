@@ -86,6 +86,7 @@ $(function(){
 			}else if ($(this).is(':checked')){
 				modules.push($(this).val());
 			}else if($(this).is('.match_pattern') && $(this).val() !=''){
+				debugger;
 				match_ptrns = $(this).val().split(';');
 				for(var i = 0; i<match_ptrns.length; i++){
 					permissions.push(match_ptrns[i].trim());
@@ -326,7 +327,7 @@ $(function(){
 		if (!downloadButton.download) {
 			console.log('generating the zip file eyooooooo');
 			manifest = _data || manifest;
-			manifestJson = JSON.stringify(manifest);
+			manifestJson = JSON.stringify(manifest,null,2);
 			for (var i = 0; i < dirs_to_remove.length; i++) {
 				var dir = dirs_to_remove[i];
 				var dirFs = zipFs.find(imported_zip_root + dir);

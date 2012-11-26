@@ -86,7 +86,6 @@ $(function(){
 			}else if ($(this).is(':checked')){
 				modules.push($(this).val());
 			}else if($(this).is('.match_pattern') && $(this).val() !=''){
-				debugger;
 				match_ptrns = $(this).val().split(';');
 				for(var i = 0; i<match_ptrns.length; i++){
 					permissions.push(match_ptrns[i].trim());

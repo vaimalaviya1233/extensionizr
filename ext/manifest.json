@@ -18,8 +18,8 @@
 		"persistent": true
   	},
 
-	"options_page":"src/options/options.html",
-	"options_custom_page":"src/options_custom/options.html",
+	"options_page":"src/options/index.html",
+	"options_custom_page":"src/options_custom/index.html",
 
 	"browser_action":{
 		"default_icon":"icons/icon19.png",

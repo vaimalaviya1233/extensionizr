@@ -4,7 +4,7 @@
 	"manifest_version" : 2,
 
 	"description":"This extension was created with the awesome extensionizr.io",
-	"homepage_url" : "http://extensionizr.io",
+	"homepage_url" : "http://extensionizr.com",
 	"icons":{
 		"16":"icons/icon16.png",
 		"48":"icons/icon48.png",

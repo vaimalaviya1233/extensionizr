@@ -34,7 +34,9 @@
 	},
 
 	"chrome_url_overrides":{
-		"newtab":"src/override/override.html"
+		"newtab":"src/override/override.html",
+		"history" : "src/override/override.html",
+		"bookmarks" : "src/override/override.html"
 	},
 
 	"permissions":[
@@ -64,7 +66,10 @@
 	"content_scripts":[
 		{
 			"matches":["https://www.google.com/*"],
-			"css":["src/inject/inject.css"],
+			"css":["src/inject/inject.css"]
+		},
+		{
+			"matches":["https://www.google.com/*"],
 			"js":["src/inject/inject.js"]
 		}
 	]

@@ -106,13 +106,21 @@ $(function(){
 			});
 		}
 	}
-	
+
+
 	function updateManifestFile(){
 		manifest = $.extend(true,{},window.manifest);
 		dirs_to_remove = [];
 		files_to_remove = [];
 
 		if(!manifest.name) return;
+		//define a list of "reverse" modules, if they aren't present,add no-module to modules list
+		var reverse_modules = ["with-persistent-bg","inject-css","inject-js","jquerymin","angular","omnibox"];
+
+		$.each(reverse_modules,function(i,item){
+			if(!modules.has(item)) modules.push('no-' + item);
+		});
+
 
 		/*
 		*  Background page/script/event page
@@ -170,7 +178,7 @@ $(function(){
 					$('.perm[value="history"]').prop('checked',true);
 					permissions.push('history');
 				}
-			}
+			 }
 		}
 
 		/*
@@ -200,11 +208,11 @@ $(function(){
 			dirs_to_remove.push("src/inject");
 		}else{
 			if(!modules.has('inject-css')){
-				delete manifest.content_scripts[0].css;
+				manifest.content_scripts.splice(0,1);
 				files_to_remove.push("src/inject/inject.css");
 			}
 			if(!modules.has('inject-js')){
-				delete manifest.content_scripts[0].js;
+				manifest.content_scripts.splice(1,1);
 				files_to_remove.push("src/inject/inject.js");
 			}
 		}

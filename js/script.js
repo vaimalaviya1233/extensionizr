@@ -46,7 +46,7 @@ $(function(){
 	$('input').click(function(){
 		update();
 	});
-	$('input[type="text"]').blur(function(){
+	$('#match_ptrns').blur(function(){
 		update();
 	});
 
@@ -66,7 +66,18 @@ $(function(){
 	/*********
 	   LOGIC
 	 *********/
-	
+	function init(){
+		if(window.location.hash == ""){
+			fillDefaultModules('blank');
+		}else{
+			url_params = JSON.parse(window.location.hash.substr(1));
+			url_bool_params = url_params['modules'].concat(url_params['boolean_perms']);
+			for (var i = 0, curModule; curModule = url_bool_params[i++];){
+				$('input[value="' + curModule +'"]').attr('checked', true);
+			};
+			$('#match_ptrns').val(""+url_params['match_ptrns'].join(';'));
+		}
+	}
 	function fillDefaultModules(type){
 		$('input').attr('checked', false);
 		for (var i = 0, curModule; curModule = config.defaultModules[type][i++];){
@@ -83,18 +94,25 @@ $(function(){
 	function updateModules(){
 		modules = [];
 		permissions = [];
+		boolean_perms = [];
+		match_ptrns = [];
 		$('input').each(function(){
 			if($(this).is('.perm') && $(this).is(':checked')){
-				permissions.push($(this).val());
+				boolean_perms.push($(this).val());
 			}else if ($(this).is(':checked')){
 				modules.push($(this).val());
 			}else if($(this).is('.match_pattern') && $(this).val() !=''){
 				match_ptrns = $(this).val().split(';');
-				for(var i = 0; i<match_ptrns.length; i++){
-					permissions.push(match_ptrns[i].trim());
-				}
 			}
 		});
+		permissions = boolean_perms.concat(match_ptrns);
+//		/* pushstate */
+		var url = JSON.stringify({
+						"modules" : modules,
+						"boolean_perms" : boolean_perms,
+						"match_ptrns" : match_ptrns
+						});
+		history.replaceState(null, 'Extensionizr', '!#'+url);
 		//check if user already changed the zip file, if so, regenerate
 		if(!downloadButton.download){
 			updateManifestFile();
@@ -273,9 +291,9 @@ $(function(){
 	var genButton = $('#gen-link');
 	var downloadButton = $('#download-link')[0];
 
-	if ($('input:checked').length > 0)
-		$('#hidden-section').fadeIn(0);
-	update();
+//	if ($('input:checked').length > 0)
+//		$('#hidden-section').fadeIn(0);
+	init();
 
 	var elms = $('.more_info');
 	$('<div/>').qtip({
@@ -317,7 +335,7 @@ $(function(){
 		console.error(message);
 	}
 
-	zip.workerScriptsPath = "zip/";
+	zip.workerScriptsPath = "/zip/";
 	imported_zip_root = "ext/";
 
 	function importZip(callback){

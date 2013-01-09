@@ -45,6 +45,8 @@ $(function(){
 
 	$('input').click(function(){
 		update();
+		debugger;
+		_gaq.push(['_trackEvent', 'Settings', $(this).val() ]);
 	});
 	$('#match_ptrns').blur(function(){
 		update();
@@ -53,14 +55,17 @@ $(function(){
 	
 	$('#preconfig-blank').click(function(){
 		fillDefaultModules('blank');
+		_gaq.push(['_trackEvent', 'Buttons', "preconfig-blank"]);
 	});
 
 	$('#preconfig-page').click(function(){
 		fillDefaultModules('page_action');
+		_gaq.push(['_trackEvent', 'Buttons', "preconfig-page"]);
 	});
 	
 	$('#preconfig-browser').click(function(){
 		fillDefaultModules('browser_action');
+		_gaq.push(['_trackEvent', 'Buttons', "preconfig-browser"]);
 	});
 	
 	/*********
@@ -380,7 +385,7 @@ $(function(){
 				var clickEvent = document.createEvent("MouseEvent");
 				clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 				downloadButton.href = data;
-
+				_gaq.push(['_trackEvent', 'Buttons', "download-button"]);
 				downloadButton.download = 'extensionizr_custom' + Date.now() + '.zip';
 				downloadButton.dispatchEvent(clickEvent);
 				event.preventDefault();

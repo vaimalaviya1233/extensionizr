@@ -340,7 +340,7 @@ $(function(){
 		console.error(message);
 	}
 
-	zip.workerScriptsPath = "/zip/";
+	zip.workerScriptsPath = "zip/";
 	imported_zip_root = "ext/";
 
 	function importZip(callback){

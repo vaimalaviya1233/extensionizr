@@ -72,6 +72,13 @@ $(function(){
 	   LOGIC
 	 *********/
 	function init(){
+        $.getJSON('ext/js/jquery/component.json').then(function(e){
+            $('.jquery-version').text(e.version);
+        });
+        $.getJSON('ext/js/angular/component.json').then(function(e){
+            $('.angular-version').text(e.version);
+        });
+
 		if(window.location.hash == ""){
 			fillDefaultModules('blank');
 		}else{
@@ -242,12 +249,11 @@ $(function(){
 		/*
 		* Addons
 		 */
-
 		if(!modules.has('jquerymin')){
-			files_to_remove.push('js/jquery-1.8.3.min.js');
+			files_to_remove.push('js/jquery/jquery.min.js');
 		}
 		if(!modules.has('angular')){
-			files_to_remove.push('js/angular.min.js');
+			files_to_remove.push('js/angular/angular.min.js');
 		}
 		if(!modules.has('omnibox')){
 			delete manifest.omnibox;

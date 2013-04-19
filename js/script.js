@@ -45,7 +45,6 @@ $(function(){
 
 	$('input').click(function(){
 		update();
-		debugger;
 		_gaq.push(['_trackEvent', 'Settings', $(this).val() ]);
 	});
 	$('#match_ptrns').blur(function(){
@@ -250,10 +249,10 @@ $(function(){
 		* Addons
 		 */
 		if(!modules.has('jquerymin')){
-			files_to_remove.push('js/jquery/jquery.min.js');
+            dirs_to_remove.push('js/jquery');
 		}
 		if(!modules.has('angular')){
-			files_to_remove.push('js/angular/angular.min.js');
+            dirs_to_remove.push('js/angular');
 		}
 		if(!modules.has('omnibox')){
 			delete manifest.omnibox;

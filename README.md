@@ -7,7 +7,7 @@ Build yourself a chrome extension in 15sec. Check it out [here](http://extension
 
 Another *izr? When will this stop
 ---------------------------------
-Extensionizr is a simple way to jump start your chrome extension development. Just select the type of extension you want, choose permissions and youre off.
+Extensionizr is a simple way to jump start your chrome extension development. Just select the type of extension you want, choose permissions and you're off.
 
 Why does this exist?
 --------------------

@@ -194,6 +194,7 @@ $(function(){
 			var url = manifest.chrome_url_overrides.newtab;
 			if ( modules.has('override-bookmarks') ){
 				delete manifest.chrome_url_overrides.newtab;
+				delete manifest.chrome_url_overrides.history;
 				manifest.chrome_url_overrides.bookmarks = url;
 				if(!permissions.has('bookmarks')){
 					$('.perm[value="bookmarks"]').prop('checked',true);
@@ -201,12 +202,16 @@ $(function(){
 				}
 
 			} else if (modules.has('override-history')){
+				delete manifest.chrome_url_overrides.bookmarks;
 				delete manifest.chrome_url_overrides.newtab;
 				manifest.chrome_url_overrides.history = url;
 				if(!permissions.has('history')){
 					$('.perm[value="history"]').prop('checked',true);
 					permissions.push('history');
 				}
+			 } else if (modules.has('override-newtab')){
+				delete manifest.chrome_url_overrides.bookmarks;
+				delete manifest.chrome_url_overrides.history;
 			 }
 		}
 

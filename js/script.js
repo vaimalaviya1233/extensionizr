@@ -113,7 +113,7 @@ $(function(){
 			}else if ($(this).is(':checked')){
 				modules.push($(this).val());
 			}else if($(this).is('.match_pattern') && $(this).val() !=''){
-				match_ptrns = $(this).val().split(';');
+				match_ptrns = $(this).val().replace(/\s+|\s+$/g, '').split(';');
 			}
 		});
 		permissions = boolean_perms.concat(match_ptrns);
